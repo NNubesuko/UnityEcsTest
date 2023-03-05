@@ -39,5 +39,10 @@ namespace UnityEcsTest.Main.Authorings
         {
             return new PlayerMoveSpeed(value);
         }
+        
+        public static float operator *(PlayerMoveSpeed playerMoveSpeed, float deltaTime)
+        {
+            return playerMoveSpeed.Value * deltaTime;
+        }
     }
 }
