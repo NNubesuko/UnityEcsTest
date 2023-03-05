@@ -6,6 +6,7 @@ namespace UnityEcsTest.Main.Aspects
 {
     public readonly partial struct SimpleMovingPlayerAspect : IAspect
     {
+        private readonly RefRO<PlayerTag> playerTag;
         private readonly RefRW<LocalTransform> transform;
         private readonly RefRO<PlayerMoveSpeed> playerMoveSpeed;
 

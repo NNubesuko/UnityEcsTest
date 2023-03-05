@@ -1,8 +1,8 @@
-﻿using Main.Jobs;
-using Unity.Burst;
+﻿using Unity.Burst;
 using Unity.Entities;
+using UnityEcsTest.Main.Jobs;
 
-namespace Main.Systems
+namespace UnityEcsTest.Main.Systems
 {
     [BurstCompile]
     public partial struct SimpleMovingPlayerSystem : ISystem

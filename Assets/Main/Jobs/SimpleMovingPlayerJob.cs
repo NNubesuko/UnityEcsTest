@@ -2,7 +2,7 @@
 using Unity.Entities;
 using UnityEcsTest.Main.Aspects;
 
-namespace Main.Jobs
+namespace UnityEcsTest.Main.Jobs
 {
     [BurstCompile]
     public partial struct SimpleMovingPlayerJob : IJobEntity
