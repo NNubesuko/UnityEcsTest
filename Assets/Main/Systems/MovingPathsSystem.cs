@@ -18,7 +18,7 @@ namespace UnityEcsTest.Main.Systems
         public void OnDestroy(ref SystemState state)
         {
         }
-
+        
         [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {

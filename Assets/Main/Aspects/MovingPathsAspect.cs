@@ -13,9 +13,10 @@ namespace UnityEcsTest.Main.Aspects
         readonly RefRW<LocalTransform> _transform;
         readonly RefRW<MovingPathsTableIndex> _tableIndex;
         readonly DynamicBuffer<MovingPathsTable> _movingPathsTable;
-
+        
         public void Move(float deltaTime)
         {
+            // 配列に要素が一つも存在しない場合は、処理を終了する
             if (_movingPathsTable.Length == 0) return;
             
             var (movedPosition, isTarget) = MoveTowards(

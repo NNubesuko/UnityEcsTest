@@ -32,8 +32,7 @@ namespace UnityEcsTest.Main.Authorings
                 Min,
                 Max,
                 ErrorValue,
-                ValueObjects.ArgumentException(nameof(value))
-            );
+                ValueObjects.ArgumentException(nameof(value)));
         }
 
         public static MovingPathsTableIndex operator +(MovingPathsTableIndex tableIndex, int addIndex)

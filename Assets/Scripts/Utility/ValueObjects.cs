@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityEcsTest.Utility
 {
-    public class ValueObjects
+    public struct ValueObjects
     {
         public const string ArgumentExceptionMessage = "不正な値が渡されました";
         
@@ -11,7 +11,7 @@ namespace UnityEcsTest.Utility
         {
             if (value < min | value > max)
             {
-                Debug.LogException(exception);
+                Debug.LogError(exception);
                 return errorValue;
             }
 
@@ -22,7 +22,7 @@ namespace UnityEcsTest.Utility
         {
             if (value < min | value > max)
             {
-                Debug.LogException(exception);
+                Debug.LogError(exception);
                 return errorValue;
             }
 
