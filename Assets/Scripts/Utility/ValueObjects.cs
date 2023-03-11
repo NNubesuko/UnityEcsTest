@@ -7,6 +7,17 @@ namespace UnityEcsTest.Utility
     {
         public const string ArgumentExceptionMessage = "不正な値が渡されました";
         
+        public static int TestValue(int value, int min, int max, int errorValue, Exception exception)
+        {
+            if (value < min | value > max)
+            {
+                Debug.LogException(exception);
+                return errorValue;
+            }
+
+            return value;
+        }
+        
         public static float TestValue(float value, float min, float max, float errorValue, Exception exception)
         {
             if (value < min | value > max)
