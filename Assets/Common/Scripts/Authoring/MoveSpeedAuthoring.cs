@@ -12,7 +12,7 @@ namespace UnityEcsTest.Common.Scripts.Authoring
         {
             public override void Bake(MoveSpeedAuthoring authoring)
             {
-                AddComponent(new MoveSpeed(authoring.value));
+                AddComponent(MoveSpeed.Of(authoring.value));
             }
         }
     }
@@ -25,7 +25,7 @@ namespace UnityEcsTest.Common.Scripts.Authoring
         public const float Max = 100f;
         public const float ErrorValue = 0f;
 
-        public MoveSpeed(float value)
+        private MoveSpeed(float value)
         {
             Value = ValueObjects.TestValue(
                 value,
@@ -33,6 +33,11 @@ namespace UnityEcsTest.Common.Scripts.Authoring
                 Max,
                 ErrorValue,
                 ValueObjects.ArgumentException(nameof(value)));
+        }
+
+        public static MoveSpeed Of(float value)
+        {
+            return new MoveSpeed();
         }
         
         public static float operator *(MoveSpeed moveSpeed, float deltaTime)
