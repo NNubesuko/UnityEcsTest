@@ -1,5 +1,5 @@
 ﻿using System;
-using UnityEcsTest.Common.Authoring;
+using UnityEcsTest.Common.Scripts.Authoring;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
@@ -18,10 +18,14 @@ namespace UnityEcsTest.Main.Aspects
         {
             // 配列に要素が一つも存在しない場合は、処理を終了する
             if (_movingPathsTable.Length == 0) return;
-            
+
+            // 移動する位置を取得
+            var targetPosition = _movingPathsTable[_tableIndex.ValueRO.Value].value;
+            // y座標はそのまま
+            targetPosition.y = _transform.ValueRO.Position.y;
             var (movedPosition, isTarget) = MoveTowards(
                 _transform.ValueRO.Position,
-                _movingPathsTable[_tableIndex.ValueRO.Value].value,
+                targetPosition,
                 _moveSpeed.ValueRO * deltaTime);
 
             _transform.ValueRW.Position = movedPosition;

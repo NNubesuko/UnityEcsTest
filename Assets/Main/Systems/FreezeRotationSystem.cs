@@ -6,14 +6,14 @@ using UnityEcsTest.Main.Jobs;
 namespace UnityEcsTest.Main.Systems
 {
     [BurstCompile]
-    public partial struct MovingPathsSystem : ISystem
+    public partial struct FreezeRotationSystem : ISystem
     {
         [BurstCompile]
         public void OnCreate(ref SystemState state)
         {
             state.RequireForUpdate<Execute>();
         }
-
+        
         [BurstCompile]
         public void OnDestroy(ref SystemState state)
         {
@@ -22,13 +22,8 @@ namespace UnityEcsTest.Main.Systems
         [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
-            float deltaTime = SystemAPI.Time.DeltaTime;
-
-            var movingPathsJobHandle = new MovingPathsJob
-            {
-                DeltaTime = deltaTime
-            };
-            movingPathsJobHandle.ScheduleParallel();
+            var freezeRotationJobHandle = new FreezeRotationJob();
+            freezeRotationJobHandle.ScheduleParallel();
         }
     }
 }
