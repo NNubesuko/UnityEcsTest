@@ -1,37 +1,40 @@
 ﻿using System;
-using UnityEngine;
+using System.Diagnostics;
+using Unity.Collections;
+using Unity.Mathematics;
+using Unity.Physics;
+using Debug = UnityEngine.Debug;
 
 namespace UnityEcsTest.Utility
 {
-    public struct ValueObjects
+    public static class ValueObjects
     {
-        public const string ArgumentExceptionMessage = "不正な値が渡されました";
-        
-        public static int TestValue(int value, int min, int max, int errorValue, Exception exception)
+        public static void CheckInRangeAndThrow(int value, int min, int max, in FixedString32Bytes paramName)
         {
             if (value < min | value > max)
-            {
-                Debug.LogError(exception);
-                return errorValue;
-            }
+                throw new ArgumentException($"{paramName}", $"{value} is out of range {min}, {max}.");
+        }
+        
+        public static void CheckInRangeAndThrow(float value, float min, float max, in FixedString32Bytes paramName)
+        {
+            if (value < min | value > max)
+                throw new ArgumentException($"{value} is out of range {min}, {max}.", $"{paramName}");
+        }
+
+        public static int KeepWithinRange(int value, int min, int max)
+        {
+            value = math.min(value, max);
+            value = math.max(value, min);
 
             return value;
         }
         
-        public static float TestValue(float value, float min, float max, float errorValue, Exception exception)
+        public static float KeepWithinRange(float value, float min, float max)
         {
-            if (value < min | value > max)
-            {
-                Debug.LogError(exception);
-                return errorValue;
-            }
+            value = math.min(value, max);
+            value = math.max(value, min);
 
             return value;
-        }
-
-        public static Exception ArgumentException(string paramName)
-        {
-            return new ArgumentException(ArgumentExceptionMessage, paramName);
         }
     }
 }

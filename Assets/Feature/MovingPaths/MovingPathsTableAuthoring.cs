@@ -1,9 +1,11 @@
-﻿using Unity.Entities;
+﻿using Common.Scripts.Authoring;
+using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
 
-namespace UnityEcsTest.Main.Authorings
+namespace Feature.MovingPaths
 {
+    [RequireComponent(typeof(MoveSpeedAuthoring))]
     public class MovingPathsTableAuthoring : MonoBehaviour
     {
         public Vector3[] values;
@@ -19,7 +21,7 @@ namespace UnityEcsTest.Main.Authorings
                 {
                     movingPathsTable.Add(new MovingPathsTable
                     {
-                        value = value
+                        Value = value
                     });
                 }
             }
@@ -28,6 +30,6 @@ namespace UnityEcsTest.Main.Authorings
 
     public struct MovingPathsTable : IBufferElementData
     {
-        public float3 value;
+        public float3 Value;
     }
 }

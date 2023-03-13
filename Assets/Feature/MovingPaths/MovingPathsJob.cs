@@ -1,9 +1,8 @@
 ﻿using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
-using UnityEcsTest.Main.Aspects;
 
-namespace UnityEcsTest.Main.Jobs
+namespace Feature.MovingPaths
 {
     public partial struct MovingPathsJob : IJobEntity
     {

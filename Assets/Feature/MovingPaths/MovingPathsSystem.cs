@@ -1,19 +1,18 @@
 ﻿using Unity.Burst;
 using Unity.Entities;
 using UnityEcsTest.Main.Executes.EntityScene_01;
-using UnityEcsTest.Main.Jobs;
 
-namespace UnityEcsTest.Main.Systems
+namespace Feature.MovingPaths
 {
     [BurstCompile]
-    public partial struct FreezeRotationSystem : ISystem
+    public partial struct MovingPathsSystem : ISystem
     {
         [BurstCompile]
         public void OnCreate(ref SystemState state)
         {
             state.RequireForUpdate<Execute>();
         }
-        
+
         [BurstCompile]
         public void OnDestroy(ref SystemState state)
         {
@@ -22,8 +21,13 @@ namespace UnityEcsTest.Main.Systems
         [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
-            var freezeRotationJobHandle = new FreezeRotationJob();
-            freezeRotationJobHandle.ScheduleParallel();
+            float deltaTime = SystemAPI.Time.DeltaTime;
+
+            var movingPathsJobHandle = new MovingPathsJob
+            {
+                DeltaTime = deltaTime
+            };
+            movingPathsJobHandle.Schedule();
         }
     }
 }

@@ -1,15 +1,14 @@
 ﻿using System;
-using UnityEcsTest.Common.Scripts.Authoring;
+using Common.Scripts.Authoring;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEcsTest.Main.Authorings;
 
-namespace UnityEcsTest.Main.Aspects
+namespace Feature.MovingPaths
 {
     public readonly partial struct MovingPathsAspect : IAspect
     {
-        readonly RefRO<MoveSpeed> _moveSpeed;
+        readonly RefRW<MoveSpeed> _moveSpeed;
         readonly RefRW<LocalTransform> _transform;
         readonly RefRW<MovingPathsTableIndex> _tableIndex;
         readonly DynamicBuffer<MovingPathsTable> _movingPathsTable;
@@ -20,7 +19,7 @@ namespace UnityEcsTest.Main.Aspects
             if (_movingPathsTable.Length == 0) return;
 
             // 移動する位置を取得
-            var targetPosition = _movingPathsTable[_tableIndex.ValueRO.Value].value;
+            var targetPosition = _movingPathsTable[_tableIndex.ValueRO.Value].Value;
             // y座標はそのまま
             targetPosition.y = _transform.ValueRO.Position.y;
             var (movedPosition, isTarget) = MoveTowards(

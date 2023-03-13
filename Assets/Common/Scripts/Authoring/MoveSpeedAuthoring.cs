@@ -2,7 +2,7 @@
 using UnityEcsTest.Utility;
 using UnityEngine;
 
-namespace UnityEcsTest.Common.Scripts.Authoring
+namespace Common.Scripts.Authoring
 {
     public class MoveSpeedAuthoring : MonoBehaviour
     {
@@ -19,27 +19,22 @@ namespace UnityEcsTest.Common.Scripts.Authoring
 
     public struct MoveSpeed : IComponentData
     {
-        public float Value { get; }
+        public readonly float Value;
 
         public const float Min = 0f;
         public const float Max = 100f;
-        public const float ErrorValue = 0f;
 
         private MoveSpeed(float value)
         {
-            Value = ValueObjects.TestValue(
-                value,
-                Min,
-                Max,
-                ErrorValue,
-                ValueObjects.ArgumentException(nameof(value)));
+            ValueObjects.CheckInRangeAndThrow(value, Min, Max, "value");
+            Value = value;
         }
 
         public static MoveSpeed Of(float value)
         {
-            return new MoveSpeed();
+            return new MoveSpeed(value);
         }
-        
+
         public static float operator *(MoveSpeed moveSpeed, float deltaTime)
         {
             return moveSpeed.Value * deltaTime;

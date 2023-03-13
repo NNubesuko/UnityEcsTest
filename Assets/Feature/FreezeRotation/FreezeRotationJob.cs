@@ -1,8 +1,7 @@
 ﻿using Unity.Burst;
 using Unity.Entities;
-using UnityEcsTest.Main.Aspects;
 
-namespace UnityEcsTest.Main.Jobs
+namespace Feature.FreezeRotation
 {
     [BurstCompile]
     public partial struct FreezeRotationJob : IJobEntity

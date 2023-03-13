@@ -1,8 +1,7 @@
 ﻿using Unity.Entities;
 using Unity.Physics;
-using UnityEcsTest.Common.Scripts.Authoring;
 
-namespace UnityEcsTest.Main.Aspects
+namespace Feature.FreezeRotation
 {
     public readonly partial struct FreezeRotationAspect : IAspect
     {
@@ -11,7 +10,7 @@ namespace UnityEcsTest.Main.Aspects
 
         public void Freeze()
         {
-            var freezeRotationFlag = _freezeRotation.ValueRO.value;
+            var freezeRotationFlag = _freezeRotation.ValueRO.Value;
             if (freezeRotationFlag.x)
                 _physicsMass.ValueRW.InverseInertia.x = 0f;
             if (freezeRotationFlag.y)

@@ -3,7 +3,7 @@ using Unity.Mathematics;
 using Unity.Physics.Authoring;
 using UnityEngine;
 
-namespace UnityEcsTest.Common.Scripts.Authoring
+namespace Feature.FreezeRotation
 {
     [RequireComponent(typeof(PhysicsBodyAuthoring))]
     public class FreezeRotationAuthoring : MonoBehaviour
@@ -16,7 +16,7 @@ namespace UnityEcsTest.Common.Scripts.Authoring
             {
                 AddComponent(new FreezeRotation
                 {
-                    value = authoring.value
+                    Value = authoring.value
                 });
             }
         }
@@ -24,6 +24,6 @@ namespace UnityEcsTest.Common.Scripts.Authoring
 
     public struct FreezeRotation : IComponentData
     {
-        public bool3 value;
+        public bool3 Value;
     }
 }
