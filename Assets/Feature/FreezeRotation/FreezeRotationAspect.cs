@@ -6,7 +6,7 @@ namespace Feature.FreezeRotation
     public readonly partial struct FreezeRotationAspect : IAspect
     {
         readonly RefRW<PhysicsMass> _physicsMass;
-        readonly RefRO<FreezeRotation> _freezeRotation;
+        readonly RefRO<Authoring.FreezeRotation> _freezeRotation;
 
         public void Freeze()
         {

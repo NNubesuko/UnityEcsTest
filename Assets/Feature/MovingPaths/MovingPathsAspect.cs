@@ -1,8 +1,9 @@
 ﻿using System;
-using Common.Scripts.Authoring;
+using Feature.MovingPaths.Authoring;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using Utility.Authoring;
 
 namespace Feature.MovingPaths
 {

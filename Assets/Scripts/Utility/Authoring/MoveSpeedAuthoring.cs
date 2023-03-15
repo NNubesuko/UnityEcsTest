@@ -2,7 +2,7 @@
 using UnityEcsTest.Utility;
 using UnityEngine;
 
-namespace Common.Scripts.Authoring
+namespace Utility.Authoring
 {
     public class MoveSpeedAuthoring : MonoBehaviour
     {

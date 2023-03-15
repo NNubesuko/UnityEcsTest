@@ -1,9 +1,9 @@
-﻿using Common.Scripts.Authoring;
-using Unity.Entities;
+﻿using Unity.Entities;
 using UnityEcsTest.Utility;
 using UnityEngine;
+using Utility.Authoring;
 
-namespace Feature.MovingPaths
+namespace Feature.MovingPaths.Authoring
 {
     [RequireComponent(typeof(MoveSpeedAuthoring))]
     public class MovingPathsTableIndexAuthoring : MonoBehaviour

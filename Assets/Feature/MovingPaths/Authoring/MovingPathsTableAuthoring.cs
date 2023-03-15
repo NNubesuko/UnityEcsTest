@@ -1,14 +1,14 @@
-﻿using Common.Scripts.Authoring;
-using Unity.Entities;
+﻿using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
+using Utility.Authoring;
 
-namespace Feature.MovingPaths
+namespace Feature.MovingPaths.Authoring
 {
-    [RequireComponent(typeof(MoveSpeedAuthoring))]
+    [RequireComponent(typeof(MoveSpeedAuthoring), typeof(MovingPathsTableIndexAuthoring))]
     public class MovingPathsTableAuthoring : MonoBehaviour
     {
-        public Vector3[] values;
+        public float3[] values;
 
         class Baker : Baker<MovingPathsTableAuthoring>
         {

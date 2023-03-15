@@ -3,7 +3,7 @@ using Unity.Mathematics;
 using Unity.Physics.Authoring;
 using UnityEngine;
 
-namespace Feature.FreezeRotation
+namespace Feature.FreezeRotation.Authoring
 {
     [RequireComponent(typeof(PhysicsBodyAuthoring))]
     public class FreezeRotationAuthoring : MonoBehaviour
